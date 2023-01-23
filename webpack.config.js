@@ -27,9 +27,17 @@ module.exports = {
     host: "0.0.0.0",
     port: 8080,
     //useLocalIp: true,
-    public: "0.0.0.0:8080",
-    contentBase: outputPath,
-    disableHostCheck: true
+    //public: "0.0.0.0:8080",
+    allowedHosts: "all",
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    client: {
+      webSocketURL: {
+        hostname: "0.0.0.0",
+        port: 8080
+      },
+    }
   },
   plugins: [
     new WriteFileWebpackPlugin(),
